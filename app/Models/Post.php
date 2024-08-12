@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Tags\HasTags;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTags;
     protected $fillable = ['title', 'slug', 'description', 'excerpt', 'featured_image', 'meta_description', 'meta_keywords', 'active', 'user_id', 'published_at'];
     public function user(): BelongsTo
     {

@@ -22,7 +22,9 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Tables\Columns\SpatieTagsColumn;
 use App\Filament\Resources\PostResource\Pages;
+use Filament\Forms\Components\SpatieTagsInput;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
 
@@ -62,6 +64,8 @@ class PostResource extends Resource
                         ])->columnSpan(1),
                     Section::make('Meta')->schema([
                         DateTimePicker::make('published_at')->label('Publish At'),
+                        SpatieTagsInput::make('tags')
+                            ->type('categories'),
                         Checkbox::make('active')->label('Published'),
 
                     ]),
@@ -87,7 +91,9 @@ class PostResource extends Resource
                     ->width(50)
                     ->height(50)
                     ->circular(),
-                ToggleColumn::make('active')
+                ToggleColumn::make('active'),
+                SpatieTagsColumn::make('tags')
+                    ->type('categories')
             ])
             ->filters([
                 //
