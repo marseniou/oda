@@ -8,7 +8,10 @@ use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Radio;
 use Illuminate\Support\Facades\Hash;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\UserResource\Pages;
@@ -37,6 +40,14 @@ class UserResource extends Resource
                     ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
                     ->dehydrated(fn(string $state): string => filled($state))
                     ->required(fn(string $context): bool => $context === 'create')
+                    ->disabledOn('edit'),
+                Radio::make('role')
+                    ->options([
+                        'admin' => 'Admin',
+                        'editor' => 'Editor',
+                        'author' => 'Author',
+
+                    ])
             ]);
     }
 
@@ -44,7 +55,10 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name'),
+                TextColumn::make('email'),
+                TextColumn::make('created_at'),
+                TextColumn::make('role'),
             ])
             ->filters([
                 //
