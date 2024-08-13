@@ -85,12 +85,13 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title'),
-                TextColumn::make('updated_at')->dateTime(),
                 ImageColumn::make('featured_image')->label('image')
                     ->width(50)
                     ->height(50)
                     ->circular(),
+                TextColumn::make('title')->searchable(),
+                TextColumn::make('user.name')->label('Author')->sortable(true, ),
+                TextColumn::make('updated_at')->dateTime(),
                 ToggleColumn::make('active'),
                 SpatieTagsColumn::make('tags')
                     ->type('categories')

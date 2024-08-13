@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="sunset">
+<html lang="en" data-theme="royal">
 
 <head>
     <meta charset="UTF-8">

@@ -22,6 +22,16 @@ class User extends Authenticatable implements FilamentUser
         if($this->role === 'admin') return true;
         else return false;
       }
+      function isEditor() {
+        
+        if($this->role === 'editor') return true;
+        else return false;
+      }
+      function isAuthor() {
+        
+        if($this->role === 'author') return true;
+        else return false;
+      }
     /**
      * The attributes that are mass assignable.
      *

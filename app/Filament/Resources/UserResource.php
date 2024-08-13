@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use App\Models\User;
+use Filament\Forms\Components\Concerns\HasHelperText;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
@@ -22,7 +23,7 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     public static function form(Form $form): Form
     {
@@ -43,9 +44,10 @@ class UserResource extends Resource
                     ->disabledOn('edit'),
                 Radio::make('role')
                     ->options([
-                        'admin' => 'Admin',
-                        'editor' => 'Editor',
-                        'author' => 'Author',
+                        'admin' => 'Admin : Has access to everything',
+                        
+                        'editor' => 'Editor : Can edit everything',
+                        'author' => 'Author  : Has access to his/her own content',
 
                     ])
             ]);
