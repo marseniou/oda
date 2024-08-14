@@ -9,6 +9,7 @@
         "diglactic/laravel-breadcrumbs": "^9.0",
         "filament/filament": "^3.2",
         "filament/spatie-laravel-tags-plugin": "^3.2",
+        "joshembling/image-optimizer": "^1.4",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9"
     },

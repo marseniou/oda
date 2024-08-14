@@ -41,9 +41,12 @@ class MusicianResource extends Resource
                             ->debounce(250)
                             ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->required(),
-                        TextInput::make('slug'),
-                        TextInput::make('instrument')->columnSpan(2),
+                        TextInput::make('slug')
+                        ->required(),
+                        TextInput::make('instrument')->required()->columnSpan(2),
                         RichEditor::make('bio')
+                            
+                            
                             ->required()
                             ->columnSpan(2)
                             ->columns(2),
@@ -55,7 +58,7 @@ class MusicianResource extends Resource
                 Group::make()->schema([
                     Section::make('Image')
                         ->schema([
-                            FileUpload::make('image')->disk('public')->directory('musician_images')->image()->imageEditor()->imageCropAspectRatio('1:1'),
+                            FileUpload::make('image')->disk('public')->directory('musician_images')->image()->optimize('webp')->imageEditor()->imageCropAspectRatio('1:1'),
                         ])->columnSpan(1),
                     Section::make('Meta')->schema([
                         

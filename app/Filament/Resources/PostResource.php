@@ -60,7 +60,7 @@ class PostResource extends Resource
                 Group::make()->schema([
                     Section::make('Image')
                         ->schema([
-                            FileUpload::make('featured_image')->disk('public')->directory('featured_images'),
+                            FileUpload::make('featured_image')->disk('public')->directory('featured_images')->image()->optimize('webp'),
                         ])->columnSpan(1),
                     Section::make('Meta')->schema([
                         DateTimePicker::make('published_at')->label('Publish At'),
