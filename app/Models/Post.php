@@ -47,12 +47,7 @@ class Post extends Model
     {
         $query->where('active', 1);
     }
-    protected function publishedAt(): Attribute
-    {
-        return Attribute::make(
-            get: fn(string $value) => Carbon::parse($value)->translatedFormat('j F o'),
-        );
-    }
+
     public function scopePublishedAt(Builder $query): void
     {
         $query->where('published_at', '<=', Carbon::now());

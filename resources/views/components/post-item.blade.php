@@ -2,7 +2,7 @@
     <div>
         <a href="{{route('post', $post->slug)}}" class="title text-3xl hover:underline">{{$post->title}}</a>
         <div class="text-sm my-8 mb-2 underline text-primary tracking-wide italic">
-            {{$post->published_at}}
+            {{\Carbon\Carbon::parse($post->published_at)->translatedFormat('j F o')}}
         </div>
         <div>{!! $post->excerpt !!}</div>
     </div>
