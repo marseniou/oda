@@ -9,9 +9,9 @@ export default defineConfig({
         }),
     ],
     server: { 
-        host: 'blogtemplate.test',
+        host: 'odablog.test',
         hmr: {
-            host: 'blogtemplate.test',
+            host: 'odablog.test',
         },
     },
 });

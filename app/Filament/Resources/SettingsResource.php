@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Tables;
 use App\Models\Setting;
 use App\Models\Settings;
@@ -46,9 +47,10 @@ class SettingsResource extends Resource
 
                 Tables\Columns\TextColumn::make('value')
                     ->formatStateUsing(fn($state) => $state === null ? 'Empty' : $state)
-                    ->limit(100)
+                    ->limit(80)
                     ->sortable()
                     ->searchable(),
+                    
             ])
             ->filters([
                 //

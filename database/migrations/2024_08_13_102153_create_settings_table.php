@@ -38,7 +38,12 @@ return new class extends Migration
         ]);
         
 
-       
+        Setting::create([
+            'key' => 'hero_image',
+            'label' => 'Hero Image',
+            'value' => null,
+            'type' => 'text',
+        ]);
     }
 
     /**

@@ -1,4 +1,5 @@
 
+
 <nav class="sticky top-0 flex flex-col md:flex-row p-5 z-50 border-b-2 border-white bg-neutral" >
     <div class="flex flex-wrap justify-between items-center">
         <div>
@@ -18,8 +19,13 @@
         </li>
         
         <li>
-            <a href="#" class="block p-5 hover:bg-slate-300 hover:underline">
-                About
+            <a href="/about" class="block p-5 hover:bg-slate-300 hover:underline {{request()->routeIs('about')? '!bg-slate-300':''}}">
+                about
+            </a>
+        </li>
+        <li>
+            <a href="{{route('concerts')}}" class="block p-5 hover:bg-slate-300 hover:underline {{request()->routeIs('concerts')? '!bg-slate-300':''}}">
+                 Συναυλίες
             </a>
         </li>
         <li>
@@ -28,7 +34,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="block p-5 hover:bg-slate-300 hover:underline">
+        <a href="{{route('blog')}}" class="block p-5 hover:bg-slate-300 hover:underline {{request()->routeIs('blog')? '!bg-slate-300':''}}">
                 Blog
             </a>
         </li>

@@ -37,18 +37,24 @@ class Post extends Model
     protected function updatedAt(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => Carbon::parse($value)->format('d M Y'),
+            get: fn(string $value) => Carbon::parse($value)->format('d M Y'),
         );
     }
-      /**
+    /**
      * Scope a query to only include active users.
      */
     public function scopeActive(Builder $query): void
     {
         $query->where('active', 1);
     }
+    protected function publishedAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn(string $value) => Carbon::parse($value)->translatedFormat('j F o'),
+        );
+    }
     public function scopePublishedAt(Builder $query): void
     {
-        $query->where('published_at','<=', Carbon::now());
+        $query->where('published_at', '<=', Carbon::now());
     }
 }
