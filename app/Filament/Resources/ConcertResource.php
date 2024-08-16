@@ -41,7 +41,7 @@ class ConcertResource extends Resource
                             ->debounce(100)
                             ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->required(),
-                        TextInput::make('slug'),
+                        TextInput::make('slug')->required()->unique(ignoreRecord:true),
                         TextInput::make('place')->label('Place')->helperText(str('Ex. Ramada Resort and Spa')),
                         TextInput::make('program')->label('Prormam')->helperText(str('Separate values with comma. Ex. Vivaldi, Bach')),
                         TextInput::make('global_event')->label('Global Event')->helperText(str('Ex. Ελευθέρια')),
@@ -53,7 +53,7 @@ class ConcertResource extends Resource
                             FileUpload::make('image')->disk('public')->directory('concert_images'),
                         ])->columnSpan(1),
                     Section::make('Concert Info')->schema([
-                        DateTimePicker::make('date')->label('Concert Date'),
+                        DateTimePicker::make('date')->label('Concert Date')->required(),
                         Checkbox::make('have_ticket')->label('Have Ticket'),
                         TextInput::make('ticket_link')->hidden(fn (Get $get): bool => ! $get('have_ticket'))->label('Link to buy tickets')->helperText(str('ex. https://more.com - Full url with https')),
 

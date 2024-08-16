@@ -47,7 +47,7 @@ class PostResource extends Resource
                             ->debounce(250)
                             ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->required(),
-                        TextInput::make('slug'),
+                        TextInput::make('slug')->required()->unique(ignoreRecord:true),
                         RichEditor::make('description')
                             ->required()
                             ->columnSpan(2)
@@ -63,7 +63,7 @@ class PostResource extends Resource
                             FileUpload::make('featured_image')->disk('public')->directory('featured_images')->image()->optimize('webp'),
                         ])->columnSpan(1),
                     Section::make('Meta')->schema([
-                        DateTimePicker::make('published_at')->label('Publish At'),
+                        DateTimePicker::make('published_at')->label('Publish At')->default(now())->helperText(str('Can publish at other date'))->required(),
                         SpatieTagsInput::make('tags')
                             ->type('categories'),
                         Checkbox::make('active')->label('Published'),

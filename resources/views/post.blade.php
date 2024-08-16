@@ -11,8 +11,8 @@
             <figure class="image mb-8">
                 <img src="{{URL::to('/')}}/{{$post->featured_image}}" alt="">
             </figure>
-            <div class="text-sm mb-2 text-primary tracking-wide italic">
-                {{$post->published_at}}
+            <div class="text-sm mb-2 text-primary tracking-wide italic underline text-r">
+            {{\Carbon\Carbon::parse($post->published_at)->translatedFormat('j F o')}}
             </div>
             {!!$post->description!!}
 

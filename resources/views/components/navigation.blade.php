@@ -1,6 +1,6 @@
 
 
-<nav class="sticky top-0 flex flex-col md:flex-row p-5 z-50 border-b-2 border-white bg-neutral" >
+<nav class="sticky top-0 flex flex-col md:flex-row p-5 z-50 border-b-2 border-white bg-neutral title text-lg shadow-md" >
     <div class="flex flex-wrap justify-between items-center">
         <div>
             <img src="{{URL::to('/')}}/logo.svg" width="64" alt="logo"></img>
@@ -14,7 +14,7 @@
     <ul class="links md:flex flex-col md:flex-row text-left w-full md:justify-end hidden text-slate-800">
         <li>
             <a href="/" class="block p-5 hover:bg-slate-300">
-                Home
+                Αρχική
             </a>
         </li>
         
@@ -24,12 +24,12 @@
             </a>
         </li>
         <li>
-            <a href="{{route('concerts')}}" class="block p-5 hover:bg-slate-300 hover:underline {{request()->routeIs('concerts')? '!bg-slate-300':''}}">
+            <a href="{{route('concerts')}}" class="block p-5 hover:bg-slate-300 hover:underline {{request()->routeIs('concerts')? '!bg-slate-300 font-bold':''}}">
                  Συναυλίες
             </a>
         </li>
         <li>
-            <a href="#" class="block p-5 hover:bg-slate-300 hover:underline">
+            <a href="/contact" class="block p-5 hover:bg-slate-300 hover:underline">
                 Contact
             </a>
         </li>

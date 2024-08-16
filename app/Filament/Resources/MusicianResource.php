@@ -42,11 +42,9 @@ class MusicianResource extends Resource
                             ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->required(),
                         TextInput::make('slug')
-                        ->required(),
+                            ->required()->unique(ignoreRecord:true),
                         TextInput::make('instrument')->required()->columnSpan(2),
                         RichEditor::make('bio')
-                            
-                            
                             ->required()
                             ->columnSpan(2)
                             ->columns(2),
@@ -61,7 +59,7 @@ class MusicianResource extends Resource
                             FileUpload::make('image')->disk('public')->directory('musician_images')->image()->optimize('webp')->imageEditor()->imageCropAspectRatio('1:1'),
                         ])->columnSpan(1),
                     Section::make('Meta')->schema([
-                        
+
                         Checkbox::make('active')->label('Is Active'),
 
                     ]),
@@ -74,7 +72,7 @@ class MusicianResource extends Resource
                 ])->collapsed()->columnSpan(2)
 
             ])->columns(3);
-            
+
     }
 
     public static function table(Table $table): Table
