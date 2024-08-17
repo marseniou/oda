@@ -17,7 +17,7 @@
         </div>
     </x-section>
 
-    <x-section class="!bg-base-100" hashtag="musicians">
+    <x-section class="!bg-base-100 !shadow-2xl shadow-slate-600" hashtag="musicians">
         <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-4 p-2 lg:p-4">
             @foreach ($musicians as $musician)
                 <x-musician-card :name="$musician->name" :image="$musician->image"

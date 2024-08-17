@@ -14,7 +14,9 @@ use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
@@ -79,7 +81,16 @@ class MusicianResource extends Resource
     {
         return $table
             ->columns([
-                //
+                ImageColumn::make('image')->label('image')
+                    ->width(50)
+                    ->height(50)
+                    ->circular(),
+                TextColumn::make('name')->searchable(),
+                TextColumn::make('instrument')->searchable(),
+                
+                TextColumn::make('updated_at')->dateTime(),
+                
+                
             ])
             ->filters([
                 //

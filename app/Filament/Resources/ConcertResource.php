@@ -14,8 +14,11 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Checkbox;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\DateTimePicker;
 use App\Filament\Resources\ConcertResource\Pages;
@@ -68,7 +71,16 @@ class ConcertResource extends Resource
     {
         return $table
             ->columns([
-                //
+                ImageColumn::make('image')->label('image')
+                    ->width(50)
+                    ->height(50)
+                    ->circular(),
+                TextColumn::make('title')->searchable(),
+                
+                TextColumn::make('updated_at')->dateTime(),
+                TextColumn::make('date')->dateTime(),
+                ToggleColumn::make('have_ticket'),
+                
             ])
             ->filters([
                 //

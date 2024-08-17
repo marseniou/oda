@@ -20,7 +20,12 @@
         
         <li>
             <a href="/about" class="block p-5 hover:bg-slate-300 hover:underline {{request()->routeIs('about')? '!bg-slate-300':''}}">
-                about
+                About
+            </a>
+        </li>
+        <li>
+            <a href="{{route('musicians')}}" class="block p-5 hover:bg-slate-300 hover:underline {{request()->routeIs('musicians')? '!bg-slate-300 font-bold':''}}">
+                 Οι Μουσικοί
             </a>
         </li>
         <li>
@@ -28,6 +33,7 @@
                  Συναυλίες
             </a>
         </li>
+
         <li>
             <a href="/contact" class="block p-5 hover:bg-slate-300 hover:underline">
                 Contact

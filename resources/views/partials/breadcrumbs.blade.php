@@ -1,4 +1,4 @@
-<div class="breadcrumbs text-sm">
+<div class="breadcrumbs text-sm tracking-wider">
 
     @unless ($breadcrumbs->isEmpty())
         <ul>

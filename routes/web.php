@@ -26,10 +26,17 @@ Route::get('/blog', function () {
 Route::get('/blog/{post:slug}', function (Post $post) {
     return view('post', compact('post'));
 })->name('post');
+Route::get('/musicians', function () {
+    $musicians = Musician::all();
+    
+    
+    return view('musicians', compact('musicians'));
+})->name('musicians');
 Route::get('/musicians/{musician:slug}', function ($slug) {
     $musician = Musician::where('slug', $slug)->first();
+    $other_musicians = Musician::where('slug','!=', $slug)->inRandomOrder()->take(3)->get();
     
-    return view('musician', compact('musician'));
+    return view('musician', compact('musician', 'other_musicians'));
 })->name('musician');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 //Route::post('/contact', [ContactController::class, 'send'])->name('contact_send');
