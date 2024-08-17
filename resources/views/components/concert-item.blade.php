@@ -10,6 +10,9 @@
         <p class="text-primary tracking-widest text-sm">
             {{Carbon\Carbon::parse($concert->date)->translatedFormat('F o')}}
         </p>
+        @if ($concert->have_ticket)
+            <a href="{{$concert->ticket_link}}" target="_oda" class="btn btn-sm btn-primary mt-4">Buy Tickets</a>
+        @endif
     </div>
 
     <div class="flex flex-col items-start justify-center col-span-5">
