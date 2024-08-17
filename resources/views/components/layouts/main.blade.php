@@ -11,8 +11,12 @@
 </head>
 
 <body class="bg-base-100">
+<x-laravel-cookies-consent></x-laravel-cookies-consent>
     <x-navigation></x-navigation>
+    
     {{$slot}}
+    
 </body>
+
 
 </html>

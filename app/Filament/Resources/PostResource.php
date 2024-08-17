@@ -92,6 +92,7 @@ class PostResource extends Resource
                 TextColumn::make('title')->searchable(),
                 TextColumn::make('user.name')->label('Author')->sortable(true, ),
                 TextColumn::make('updated_at')->dateTime(),
+                TextColumn::make('published_at')->dateTime(),
                 ToggleColumn::make('active'),
                 SpatieTagsColumn::make('tags')
                     ->type('categories')

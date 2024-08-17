@@ -21,7 +21,7 @@
         <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-4 p-2 lg:p-4">
             @foreach ($musicians as $musician)
                 <x-musician-card :name="$musician->name" :image="$musician->image"
-                    :instrument="$musician->instrument"></x-musician-card>
+                    :instrument="$musician->instrument" :slug="$musician->slug"></x-musician-card>
             @endforeach
         </div>
         <x-custom-button-border text="Όλοι οι Μουσικοί" link="musicians" color="" @class(['text-secondary-content border-secondary-content ml-4'])></x-custom-button-border>
@@ -30,10 +30,11 @@
     </x-section>
 
     <x-section hashtag="next concert" class="bg-blend-overlay" style="background-image:url('{{URL::to('/')}}/cross.png')">
-        <x-header title="Επόμενη Συναυλία" class="text-white"></x-header>
+        <x-header :title="'Επόμενη συναυλία (σε '.(int)\Carbon\Carbon::parse(now())->diffInDays($concert->date). ' ημέρες)'" class="text-white"></x-header>
         <div class="bg-white mb-12 p-8">
             <x-concert-item :$concert></x-concert-item>
         </div>
         <x-custom-button-border text="Όλες οι Συναυλίες" link="concerts" color="text-primary"></x-custom-button-border>
     </x-section>
+    
 </x-layouts.main>

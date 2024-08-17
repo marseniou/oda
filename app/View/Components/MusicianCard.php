@@ -9,15 +9,17 @@ use Illuminate\View\Component;
 class MusicianCard extends Component
 {
     public $name;
+    public $slug;
     public $image;
     public $instrument;
     /**
      * Create a new component instance.
      */
-    public function __construct($name, $image, $instrument)
+    public function __construct($name, $image, $instrument, $slug)
     {
         $this->name = $name;
         $this->image = $image;
+        $this->slug = $slug;
         $this->instrument = $instrument;
     }
 
